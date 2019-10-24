@@ -1,5 +1,6 @@
 <template>
   <div>    
+  <button @click="escribirBD">ButtonEscribirBD</button>
     <v-data-table :headers="headers" :items="sensorsReadings" class="elevation-1">
       <template v-slot:item.mq2="{ item }">
         <v-chip :color="getColorMq2(item.mq2)" dark outlined>{{ item.mq2 }}</v-chip>
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "Monitoreo",
   computed: {
@@ -37,82 +38,11 @@ export default {
         { text: "Main door status", align: "center", value: "mag" },
         { text: "Movement (home backyard)", align: "center", value: "pir1" },
         { text: "Movement (home living room)", align: "center", value: "pir2" }
-      ],
-      desserts: [
-        {
-          hhmmss: "23:15:00",
-          mq2: "normal",
-          mag: "closed",
-          pir1: "no",
-          pir2: "no"
-        },
-        {
-          hhmmss: "23:15:01",
-          mq2: "warning",
-          mag: "closed",
-          pir1: "no",
-          pir2: "no"
-        },
-        {
-          hhmmss: "23:15:02",
-          mq2: "warning",
-          mag: "closed",
-          pir1: "no",
-          pir2: "no"
-        },
-        {
-          hhmmss: "23:15:03",
-          mq2: "warning",
-          mag: "open",
-          pir1: "no",
-          pir2: "yes"
-        },
-        {
-          hhmmss: "23:15:04",
-          mq2: "warning",
-          mag: "open",
-          pir1: "yes",
-          pir2: "no"
-        },
-        {
-          hhmmss: "23:15:05",
-          mq2: "warning",
-          mag: "open",
-          pir1: "yes",
-          pir2: "yes"
-        },
-        {
-          hhmmss: "23:15:06",
-          mq2: "warning",
-          mag: "open",
-          pir1: "no",
-          pir2: "no"
-        },
-        {
-          hhmmss: "23:15:07",
-          mq2: "danger",
-          mag: "closed",
-          pir1: "no",
-          pir2: "no"
-        },
-        {
-          hhmmss: "23:15:08",
-          mq2: "danger",
-          mag: "closed",
-          pir1: "no",
-          pir2: "yes"
-        },
-        {
-          hhmmss: "23:15:09",
-          mq2: "danger",
-          mag: "closed",
-          pir1: "yes",
-          pir2: "no"
-        }
-      ]
+      ],      
     };
   },
   methods: {
+    ...mapMutations(['escribirBD']),
     getColorMq2(mq2) {
       if (mq2 === "danger") {
         return "red";

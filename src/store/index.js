@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import firebase from 'firebase'
 
 Vue.use(Vuex)
 
@@ -25,9 +26,17 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    escribirBD:function(){
+      firebase.database().ref('/salas/1').set("algoAqui")
+    }
+
   },
   actions: {
+    
   },
   modules: {
+  },
+  getters:{
+
   }
 })
