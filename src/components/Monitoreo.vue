@@ -31,7 +31,7 @@
             value: 'hhmmss',
           },
           { text: 'Toxic gas', value: 'mq2' },
-          { text: 'Door status', value: 'mag' },
+          { text: 'Main door status', value: 'mag' },
           { text: 'Movement (home backyard)', value: 'pir1'},
           { text: 'Movement (home living room)', value: 'pir2' }          
         ],

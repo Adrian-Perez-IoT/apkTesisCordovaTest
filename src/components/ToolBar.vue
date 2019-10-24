@@ -10,6 +10,7 @@
       v-model="drawer"
       absolute
       temporary
+      app
     >
       <v-list-item>
         <v-list-item-avatar>
