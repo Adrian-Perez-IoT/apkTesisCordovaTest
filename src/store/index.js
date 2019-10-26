@@ -6,33 +6,44 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    sensorsReadings:[
-      {hhmmss:'00:46:00', mag:'closed', mq2:'normal', pir1:'no', pir2:'no'},
-      {hhmmss:'00:46:01', mag:'open', mq2:'warning', pir1:'no', pir2:'yes'},
-      {hhmmss:'00:46:02', mag:'closed', mq2:'danger', pir1:'yes', pir2:'no'},
-      {hhmmss:'00:46:03', mag:'closed', mq2:'danger', pir1:'yes', pir2:'yes'},
-      {hhmmss:'00:46:00', mag:'closed', mq2:'normal', pir1:'no', pir2:'no'},
-      {hhmmss:'00:46:01', mag:'open', mq2:'warning', pir1:'no', pir2:'yes'},
-      {hhmmss:'00:46:02', mag:'closed', mq2:'danger', pir1:'yes', pir2:'no'},
-      {hhmmss:'00:46:03', mag:'closed', mq2:'danger', pir1:'yes', pir2:'yes'},
-      {hhmmss:'00:46:00', mag:'closed', mq2:'normal', pir1:'no', pir2:'no'},
-      {hhmmss:'00:46:01', mag:'open', mq2:'warning', pir1:'no', pir2:'yes'},
-      {hhmmss:'00:46:02', mag:'closed', mq2:'danger', pir1:'yes', pir2:'no'},
-      {hhmmss:'00:46:03', mag:'closed', mq2:'danger', pir1:'yes', pir2:'yes'},
-      {hhmmss:'00:46:00', mag:'closed', mq2:'normal', pir1:'no', pir2:'no'},
-      {hhmmss:'00:46:01', mag:'open', mq2:'warning', pir1:'no', pir2:'yes'},
-      {hhmmss:'00:46:02', mag:'closed', mq2:'danger', pir1:'yes', pir2:'no'},
-      {hhmmss:'00:46:03', mag:'closed', mq2:'danger', pir1:'yes', pir2:'yes'},
-    ]
+    sensorsReadings:[]
   },
   mutations: {
+    setSensorsReadings(state, data){ 
+      state.sensorsReadings = [];
+      if (data){
+        const readingsIds = Object.keys(data);
+        readingsIds.forEach((readingId)=>{
+          // alert(readingId);
+          // alert(data[readingId].hhmmss);
+          state.sensorsReadings.push(
+            data[readingId]
+          )
+          
+        })
+      }
+     },
+    //setError(,){  }
     escribirBD:function(){
-      firebase.database().ref('/salas/1').set("algoAqui")
+      firebase.database().ref('/salas/3').set("MasAlgoAqui")
     }
 
   },
   actions: {
-    
+    // readBroadcast:function(){
+    //   firebase.database().ref('/StreamingTemporary/idPush').once('value').then(
+    //     function(snapshot){
+    //       alert(snapshot.val().mq2)
+    //     }
+    //   )
+    // },
+    readBroadcast:function(context){
+      firebase.database().ref('/StreamingTemporary').once('value').then(
+        function(snapshot){
+          context.commit('setSensorsReadings',snapshot.val());
+        }
+      )
+    }
   },
   modules: {
   },

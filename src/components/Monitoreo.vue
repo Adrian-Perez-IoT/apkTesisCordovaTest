@@ -1,6 +1,7 @@
 <template>
   <div>    
-  <button @click="escribirBD">ButtonEscribirBD</button>
+  <!-- <v-btn color="secondary" dark @click="escribirBD">EscribirBD</v-btn> -->
+  <!-- <v-btn color="primary" dark @click="readBroadcast">LeerBD</v-btn> -->
     <v-data-table :headers="headers" :items="sensorsReadings" class="elevation-1">
       <template v-slot:item.mq2="{ item }">
         <v-chip :color="getColorMq2(item.mq2)" dark outlined>{{ item.mq2 }}</v-chip>
@@ -19,9 +20,12 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations, mapActions} from "vuex";
 export default {
   name: "Monitoreo",
+  created(){
+    this.readBroadcast()
+  },
   computed: {
     ...mapState(["sensorsReadings"])
   },
@@ -42,7 +46,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['readBroadcast']),
     ...mapMutations(['escribirBD']),
+
     getColorMq2(mq2) {
       if (mq2 === "danger") {
         return "red";
