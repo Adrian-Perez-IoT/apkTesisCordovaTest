@@ -1,6 +1,7 @@
 <template>
   <div>    
   <!-- <v-btn color="secondary" dark @click="escribirBD">EscribirBD</v-btn> -->
+  <v-btn color="primary" dark @click="obtenerToken">Get Token</v-btn>
   <v-btn color="primary" dark @click="readBroadcast">Actualizar</v-btn>
     <v-data-table :headers="headers" :items="sensorsReadings" class="elevation-1">
       <template v-slot:item.mq2="{ item }">
@@ -21,6 +22,10 @@
 
 <script>
 import { mapState, mapMutations, mapActions} from "vuex";
+import { log } from 'util';
+
+
+// import func from '../../vue-temp/vue-editor-bridge';
 export default {
   name: "Monitoreo",
   created(){
@@ -46,8 +51,23 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['readBroadcast']),
+    ...mapActions(['readBroadcast','obtenerToken']),
     ...mapMutations(['escribirBD']),
+
+    getToken(){
+      
+      // algo.getToken(
+      //   function(token){
+      //     // save this server-side and use it to push notifications to this device
+      //     log(token);
+      //   },
+      //   function(error){
+      //     log(error);
+      //   }
+      // );
+      log("token es:");
+      // alert('token:')
+    },
 
     getColorMq2(mq2) {
       if (mq2 === "danger") {

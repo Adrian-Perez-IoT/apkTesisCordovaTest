@@ -3,8 +3,8 @@
     <v-app-bar app class="red darken-1">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
-      <v-btn class="success" small>Ingreso</v-btn>
-      <v-btn class="danger" small>Salir</v-btn>
+      <!-- <v-btn class="success" small>Ingreso</v-btn>
+      <v-btn class="danger" small>Salir</v-btn> -->
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
@@ -64,9 +64,13 @@ export default {
         return {
             drawer:null,
             items: [
-                { title: 'Generar informes', icon: 'mdi-xbox-controller' },                
-                { title: 'Programar funcionamiento', icon: 'mdi-xbox-controller' },
-                { title: 'Administrar usuarios', icon: 'mdi-watch' },
+                { title: 'Inicio', icon: 'mdi-xbox-controller' },
+                { title: 'Notificaciones', icon: 'mdi-xbox-controller' },
+                { title: 'Programar horarios', icon: 'mdi-xbox-controller' },
+                { title: 'Generar informes', icon: 'mdi-xbox-controller' },
+                { title: 'Gestionar usuarios', icon: 'mdi-watch' },
+                { title: 'Mi cuenta', icon: 'mdi-watch' },
+                { title: 'Log out', icon: 'mdi-watch' },
             ]
         }
     }

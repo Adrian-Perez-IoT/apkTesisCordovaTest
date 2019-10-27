@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import firebase from 'firebase'
+import { log } from 'util';
 
 Vue.use(Vuex)
 
@@ -43,6 +44,60 @@ export default new Vuex.Store({
           context.commit('setSensorsReadings',snapshot.val());
         }
       )
+    },
+    obtenerToken:function(){
+      Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+          log('Notification permission granted.');
+          // TODO(developer): Retrieve an Instance ID token for use with FCM.
+          // ...
+        } else {
+          log('Unable to get permission to notify.');
+        }
+      });
+
+      const messaging = firebase.messaging();
+      messaging.getToken()
+        .then(
+          (currentToken) => {
+            if (currentToken) {
+              log('currentToken Valido')
+              // sendTokenToServer(currentToken);
+              // updateUIForPushEnabled(currentToken);
+            } else {
+              // Show permission request.
+              log('No Instance ID token available. Request permission to generate one.');
+              // Show permission UI.
+              // updateUIForPushPermissionRequired();
+              // setTokenSentToServer(false);
+            }
+          })
+        .catch(
+          (err) => {
+            log('error desde el cath',err)
+            // console.log('An error occurred while retrieving token. ', err);
+            // showToken('Error retrieving Instance ID token. ', err);
+            // setTokenSentToServer(false);
+          }
+        );
+      messaging.getToken(
+        function(currentToken) {
+          // alert(currentToken);
+          if (currentToken) {
+              log("El token es" + currentToken);
+              // sendTokenToServer(currentToken);
+              //updateUIForPushEnabled(currentToken);
+          } else {
+            log('error')
+              // Show permission request.
+              // console.log('No Instance ID token available. Request permission to generate one.');
+              // Show permission UI.
+              // updateUIForPushPermissionRequired();
+              // setTokenSentToServer(false);
+          }
+      }
+      );
+      log('token token');
     }
   },
   modules: {
