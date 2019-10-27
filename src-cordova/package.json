@@ -21,7 +21,10 @@
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-androidx-adapter": {},
+      "cordova-plugin-androidx": {},
+      "cordova-plugin-firebase-lib": {}
     },
     "platforms": [
       "android",
