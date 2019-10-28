@@ -61,7 +61,7 @@ export default new Vuex.Store({
         .then(
           (currentToken) => {
             if (currentToken) {
-              log('currentToken Valido')
+              log('currentToken Valido',currentToken)
               // sendTokenToServer(currentToken);
               // updateUIForPushEnabled(currentToken);
             } else {
@@ -80,24 +80,7 @@ export default new Vuex.Store({
             // setTokenSentToServer(false);
           }
         );
-      messaging.getToken(
-        function(currentToken) {
-          // alert(currentToken);
-          if (currentToken) {
-              log("El token es" + currentToken);
-              // sendTokenToServer(currentToken);
-              //updateUIForPushEnabled(currentToken);
-          } else {
-            log('error')
-              // Show permission request.
-              // console.log('No Instance ID token available. Request permission to generate one.');
-              // Show permission UI.
-              // updateUIForPushPermissionRequired();
-              // setTokenSentToServer(false);
-          }
-      }
-      );
-      log('token token');
+      // log('token token');
     }
   },
   modules: {
