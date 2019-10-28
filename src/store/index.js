@@ -46,7 +46,8 @@ export default new Vuex.Store({
       )
     },
     obtenerToken:function(){
-      Notification.requestPermission().then((permission) => {
+      //nota: cuando ejecuto el codigo en el navegador, el objeto "Notification" no esta definino en "window"
+      /* Notification.requestPermission().then((permission) => {
         if (permission === 'granted') {
           log('Notification permission granted.');
           // TODO(developer): Retrieve an Instance ID token for use with FCM.
@@ -54,32 +55,33 @@ export default new Vuex.Store({
         } else {
           log('Unable to get permission to notify.');
         }
-      });
+      }); */
 
-      const messaging = firebase.messaging();
-      messaging.getToken()
-        .then(
-          (currentToken) => {
-            if (currentToken) {
-              log('currentToken Valido',currentToken)
-              // sendTokenToServer(currentToken);
-              // updateUIForPushEnabled(currentToken);
-            } else {
-              // Show permission request.
-              log('No Instance ID token available. Request permission to generate one.');
-              // Show permission UI.
-              // updateUIForPushPermissionRequired();
-              // setTokenSentToServer(false);
-            }
-          })
-        .catch(
-          (err) => {
-            log('error desde el cath',err)
-            // console.log('An error occurred while retrieving token. ', err);
-            // showToken('Error retrieving Instance ID token. ', err);
-            // setTokenSentToServer(false);
-          }
-        );
+      //reemplazar el uso de la libreria firebase por la libreria cordova-plugin-firebasex-lib
+      // const messaging = firebase.messaging();
+      // messaging.getToken()
+      //   .then(
+      //     (currentToken) => {
+      //       if (currentToken) {
+      //         log('currentToken Valido',currentToken)
+      //         // sendTokenToServer(currentToken);
+      //         // updateUIForPushEnabled(currentToken);
+      //       } else {
+      //         // Show permission request.
+      //         log('No Instance ID token available. Request permission to generate one.');
+      //         // Show permission UI.
+      //         // updateUIForPushPermissionRequired();
+      //         // setTokenSentToServer(false);
+      //       }
+      //     })
+      //   .catch(
+      //     (err) => {
+      //       log('error desde el cath',err)
+      //       // console.log('An error occurred while retrieving token. ', err);
+      //       // showToken('Error retrieving Instance ID token. ', err);
+      //       // setTokenSentToServer(false);
+      //     }
+      //   );
       // log('token token');
     }
   },
