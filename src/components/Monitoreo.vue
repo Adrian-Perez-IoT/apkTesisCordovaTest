@@ -1,6 +1,7 @@
 <template>
   <div>    
-  <!-- <v-btn color="secondary" dark @click="escribirBD">EscribirBD</v-btn> -->
+  <v-btn color="secondary" dark @click="setVapidAndRequestPermission">ProbandoFirebaseMessaging</v-btn>
+  <v-btn color="secondary" dark @click="recuperarToken">recuperarToken</v-btn>
   <!-- <v-btn color="primary" dark @click="readBroadcast">LeerBD</v-btn> -->
     <v-data-table :headers="headers" :items="sensorsReadings" class="elevation-1">
       <template v-slot:item.mq2="{ item }">
@@ -46,7 +47,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['readBroadcast']),
+    ...mapActions(['readBroadcast','setVapidAndRequestPermission','recuperarToken']),
     ...mapMutations(['escribirBD']),
 
     getColorMq2(mq2) {
