@@ -1,7 +1,7 @@
 <template>
   <div>    
   <!-- <v-btn color="secondary" dark @click="escribirBD">EscribirBD</v-btn> -->
-  <v-btn color="primary" dark @click="obtenerToken">Get Token</v-btn>
+  <!-- <v-btn color="primary" dark @click="obtenerToken">Get Token</v-btn> -->
   <v-btn color="primary" dark @click="readBroadcast">Actualizar</v-btn>
     <v-data-table :headers="headers" :items="sensorsReadings" class="elevation-1">
       <template v-slot:item.mq2="{ item }">

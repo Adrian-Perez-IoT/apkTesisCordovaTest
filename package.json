@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "bajar": "cordova-build-only-www-android && cd src-cordova && cordova run android && cd ..",
+    "bajar": "npm run cordova-build-only-www-android && cd src-cordova && cordova run android && cd ..",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",

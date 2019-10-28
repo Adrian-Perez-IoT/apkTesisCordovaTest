@@ -1,20 +1,22 @@
 <template>
-  <v-app>
+  <v-app>     
     <ToolBar/>
     <v-content>
-      <Monitoreo/>
+      <router-view></router-view>  
     </v-content>
+    
   </v-app>
 </template>
 
 <script>
 import ToolBar from './components/ToolBar';
-import Monitoreo from './components/Monitoreo';
+// import Monitoreo from './components/Monitoreo';
 
 export default {
   name: 'App',
   components: {
-     ToolBar,Monitoreo
+     ToolBar,
+    //  Monitoreo
   },
   data: () => ({
     //

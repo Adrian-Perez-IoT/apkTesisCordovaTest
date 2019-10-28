@@ -46,6 +46,7 @@ export default new Vuex.Store({
       )
     },
     obtenerToken:function(){
+      log("entre a la funcion obtenerToken");
       //nota: cuando ejecuto el codigo en el navegador, el objeto "Notification" no esta definino en "window"
       /* Notification.requestPermission().then((permission) => {
         if (permission === 'granted') {
