@@ -2,7 +2,7 @@
   <v-app>     
     <ToolBar/>
     <v-content>
-      <router-view></router-view>  
+      <router-view></router-view>
     </v-content>
     
   </v-app>

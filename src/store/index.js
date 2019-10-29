@@ -31,6 +31,9 @@ export default new Vuex.Store({
 
   },
   actions: {
+    myfunction:function(){
+
+    },
     // readBroadcast:function(){
     //   firebase.database().ref('/StreamingTemporary/idPush').once('value').then(
     //     function(snapshot){

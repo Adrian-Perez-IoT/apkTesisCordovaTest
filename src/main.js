@@ -7,7 +7,6 @@ import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 import firebase from 'firebase'
 
-
 Vue.config.productionTip = false
 
 // Your web app's Firebase configuration
