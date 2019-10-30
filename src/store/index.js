@@ -7,7 +7,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    sensorsReadings:[]
+    sensorsReadings:[],
+    
   },
   mutations: {
     setSensorsReadings(state, data){ 
@@ -48,6 +49,7 @@ export default new Vuex.Store({
         }
       )
     },
+    
     obtenerToken:function(){
       log("entre a la funcion obtenerToken");
       //nota: cuando ejecuto el codigo en el navegador, el objeto "Notification" no esta definino en "window"
