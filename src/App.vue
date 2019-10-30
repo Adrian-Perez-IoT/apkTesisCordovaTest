@@ -13,10 +13,9 @@ import ToolBar from './components/ToolBar';
 export default {
   name: 'App',
   components: {
-     ToolBar,    
+     ToolBar
   },
   data: () => ({
-    //
   }),
 };
 </script>

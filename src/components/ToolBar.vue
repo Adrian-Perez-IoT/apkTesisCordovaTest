@@ -24,12 +24,13 @@
 
       <v-divider></v-divider>
 
-      <v-list dense>
-
+      <v-list dense>        
         <v-list-item
           v-for="item in items"
           :key="item.title"
           link
+          :to='item.router'          
+
         >
           <v-list-item-icon>
             <v-icon> {{item.icon}} </v-icon>
@@ -38,6 +39,8 @@
           <v-list-item-content>
             <v-list-item-title> {{item.title}}</v-list-item-title>
           </v-list-item-content>
+
+          
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -64,13 +67,13 @@ export default {
         return {
             drawer:null,
             items: [
-                { title: 'Inicio', icon: 'mdi-xbox-controller' },
-                { title: 'Notificaciones', icon: 'mdi-xbox-controller' },
-                { title: 'Programar horarios', icon: 'mdi-xbox-controller' },
-                { title: 'Generar informes', icon: 'mdi-xbox-controller' },
-                { title: 'Gestionar usuarios', icon: 'mdi-watch' },
-                { title: 'Mi cuenta', icon: 'mdi-watch' },
-                { title: 'Log out', icon: 'mdi-watch' },
+                { title: 'Inicio', icon: 'mdi-xbox-controller', router:'/' },
+                { title: 'Notificaciones', icon: 'mdi-xbox-controller', router:'/notificaciones' },
+                { title: 'Programar horarios', icon: 'mdi-xbox-controller', router:'/programarhorarios' },
+                { title: 'Generar informes', icon: 'mdi-xbox-controller', router:'/generarinformes' },
+                { title: 'Gestionar usuarios', icon: 'mdi-watch', router:'/gestionarusuarios' },
+                { title: 'Mi cuenta', icon: 'mdi-watch', router:'/micuenta' },
+                { title: 'Log out', icon: 'mdi-watch', router:'/logout' },
             ]
         }
     }
