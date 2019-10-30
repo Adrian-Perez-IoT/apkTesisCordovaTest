@@ -6,6 +6,7 @@ import vuetify from './plugins/vuetify';
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 import firebase from 'firebase'
+import { log } from 'util';
 
 Vue.config.productionTip = false
 
@@ -22,9 +23,17 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-new Vue({
-  router,
-  store,
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+firebase.auth().onAuthStateChanged(function(user){
+  log('Se inicializo firebase con el usario:', user);
+  
+  
+  new Vue({
+    router,
+    store,
+    vuetify,
+    render: h => h(App)
+  }).$mount('#app') 
+    
+})
+
+

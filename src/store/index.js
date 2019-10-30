@@ -8,9 +8,23 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     sensorsReadings:[],
-    
+    notifications:[]    
   },
   mutations: {
+    setNotifications(state, data){ 
+      state.notifications = [];
+      if (data){
+        const notificationsIds = Object.keys(data);
+        notificationsIds.forEach((notificationId)=>{
+          // alert(readingId);
+          // alert(data[readingId].hhmmss);
+          state.notifications.push(
+            data[notificationId]
+          )
+          
+        })
+      }
+     },
     setSensorsReadings(state, data){ 
       state.sensorsReadings = [];
       if (data){
@@ -32,6 +46,13 @@ export default new Vuex.Store({
 
   },
   actions: {
+    readNotifications:function(context){
+      firebase.database().ref('/Notifications').once('value').then(
+        function(snapshot){
+          context.commit('setNotifications',snapshot.val());
+        }
+      )
+    },
     myfunction:function(){
 
     },
