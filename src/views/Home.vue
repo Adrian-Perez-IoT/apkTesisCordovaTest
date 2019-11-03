@@ -2,7 +2,7 @@
   <div>    
   <!-- <v-btn color="secondary" dark @click="escribirBD">EscribirBD</v-btn> -->
   <!-- <v-btn color="primary" dark @click="obtenerToken">Get Token</v-btn> -->
-  <v-btn color="primary" dark @click="readBroadcast">Actualizar</v-btn>
+  <!-- <v-btn color="primary" dark @click="readBroadcast">Actualizar</v-btn> -->
     <v-data-table :headers="headers" :items="sensorsReadings" class="elevation-1">
       <template v-slot:item.mq2="{ item }">
         <v-chip :color="getColorMq2(item.mq2)" dark outlined>{{ item.mq2 }}</v-chip>
@@ -21,14 +21,14 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions} from "vuex";
+import { mapState, mapActions} from "vuex";
 import { log } from 'util';
 
 
 // import func from '../../vue-temp/vue-editor-bridge';
 export default {
   name: "Monitoreo",
-  created(){
+  mounted(){
     this.readBroadcast()
   },
   computed: {
@@ -45,14 +45,14 @@ export default {
         },
         { text: "Toxic gas", align: "center", value: "mq2" },
         { text: "Main door status", align: "center", value: "mag" },
-        { text: "Movement (home backyard)", align: "center", value: "pir1" },
-        { text: "Movement (home living room)", align: "center", value: "pir2" }
+        { text: "Movement in home backyard", align: "center", value: "pir1" },
+        { text: "Movement on home living room", align: "center", value: "pir2" }
       ],      
     };
   },
   methods: {
     ...mapActions(['readBroadcast','obtenerToken']),
-    ...mapMutations(['escribirBD']),
+    // ...mapMutations(['escribirBD']),
 
     getToken(){
       

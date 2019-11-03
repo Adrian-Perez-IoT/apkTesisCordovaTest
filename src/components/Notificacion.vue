@@ -4,7 +4,7 @@
           <v-chip color="orange" text-color="dark">
             <v-avatar left>
               <v-icon>mdi-bell-outline</v-icon>
-            </v-avatar>Movement on home living room
+            </v-avatar>Place: {{notifications[0].place}}
           </v-chip>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
@@ -13,16 +13,16 @@
               <v-card color="#ff98000F" :shaped='true'>
                 <v-card-subtitle
                   class="my-0 subtitle-1 black--text"
-                >Living room: movimiento detectado</v-card-subtitle>
+                >It was detected: {{notifications[0].sensorType}} </v-card-subtitle>
                 <v-card-text>
                   <div class="font-weight-regular black--text">Moment:</div>
-                  <div class="font-weight-regular black--text mb-3">29 de Octubre de 2019, 11:59 AM</div>
+                  <div class="font-weight-regular black--text mb-3">{{notifications[0].moment}}</div>
                   <v-divider class="mx-4"></v-divider>
                   <div class="font-weight-regular black--text mt-3">Site:</div>
-                  <div class="font-weight-regular black--text mb-3">Living room</div>
+                  <div class="font-weight-regular black--text mb-3">{{notifications[0].place}}</div>
                   <v-divider class="mx-4"></v-divider>
-                  <div class="font-weight-regular black--text mt-3">Triggered by:</div>
-                  <div class="font-weight-regular black--text mb-3">Sensor Pir2</div>
+                  <div class="font-weight-regular black--text mt-3">Triggered by sensor:</div>
+                  <div class="font-weight-regular black--text mb-3">{{notifications[0].sensorName}}</div>
                   <v-divider class="mx-4"></v-divider>
                 </v-card-text>
               </v-card>
@@ -78,34 +78,26 @@
 </template>
 
 <script>
-// import { mapState, mapMutations, mapActions} from "vuex";
-import { log } from "util";
+// import { log } from "util";
+import { mapState } from "vuex";
 
 export default {
   name: "Notificacion",
-  created() {},
-  /* computed: {
-    ...mapState([""])
-  }, */
+  computed: {
+    ...mapState(["notifications"])
+  },
   data() {
     return {
-      notifications:[
+      /* notifications:[
         {moment:"20 de Octubre de 2019, 11:52 AM", lugar:"Living roo"},
         {moment:"21 de Octubre de 2019, 21:06 AM", lugar:"Backyard"},
-      ],
+      ], */
       panel: [0, 1],
       readonly: false,
     };
   },
   methods: {
-    /* ...mapActions(['','']),
-    ...mapMutations(['']),
- */
-    myFunction() {
-      log("Estoy en myFunction");
-    },
 
-    myFuncion() {}
   }
 };
 </script>

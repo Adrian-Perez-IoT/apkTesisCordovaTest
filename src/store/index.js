@@ -8,10 +8,19 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     sensorsReadings:[],
-    notifications:[]    
+    notifications:[
+      { moment:"Data set of default", 
+        number:"Data set of default", 
+        place:"Data set of default", 
+        sensorType:"Data set of default", 
+        sensorStatus:"Data set of default",
+        sensorName:"Data set of default",
+      },      
+    ]  
   },
   mutations: {
     setNotifications(state, data){ 
+      // state.notifications.push({moment:"20 de Octubre de 2019, 11:52 AM", lugar:"Living roo"});
       state.notifications = [];
       if (data){
         const notificationsIds = Object.keys(data);
@@ -46,14 +55,17 @@ export default new Vuex.Store({
 
   },
   actions: {
-    readNotifications:function(context){
-      firebase.database().ref('/Notifications').once('value').then(
+    async myFunction(){ 
+    },
+    async readNotifications (context){
+      log('estoy en readNotifications');
+      await firebase.database().ref('/Notifications').once('value').then(
         function(snapshot){
           context.commit('setNotifications',snapshot.val());
+          // log("readNotifications:", snapshot.val());
+          // log("contexto:", context);
         }
       )
-    },
-    myfunction:function(){
 
     },
     // readBroadcast:function(){
