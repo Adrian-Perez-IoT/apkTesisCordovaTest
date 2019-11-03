@@ -68,6 +68,7 @@ export default {
             drawer:null,
             items: [
                 { title: 'Inicio', icon: 'mdi-xbox-controller', router:'/' },
+                { title: 'Monitoreo', icon: 'mdi-xbox-controller', router:'/monitoreo' },
                 { title: 'Notificaciones', icon: 'mdi-xbox-controller', router:'/notificaciones' },
                 { title: 'Programar horarios', icon: 'mdi-xbox-controller', router:'/programarhorarios' },
                 { title: 'Generar informes', icon: 'mdi-xbox-controller', router:'/generarinformes' },

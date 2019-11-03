@@ -1,17 +1,23 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Monitoreo from '../views/Monitoreo.vue'
 import Notificaciones from '../views/Notificaciones.vue'
 import About from '../views/About.vue'
+import Inicio from '../views/Inicio.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
-  },  
+    name: 'Inicio',
+    component: Inicio
+  },
+  {
+    path: '/monitoreo',
+    name: 'monitoreo',
+    component: Monitoreo
+  },
   {
     path: '/notificaciones',
     name: 'notificaciones',
