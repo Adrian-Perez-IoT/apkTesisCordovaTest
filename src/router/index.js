@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Monitoreo from '../views/Monitoreo.vue'
 import Notificaciones from '../views/Notificaciones.vue'
 import About from '../views/About.vue'
-import Inicio from '../views/Inicio.vue'
+// import Inicio from '../views/Inicio.vue'
 
 Vue.use(VueRouter)
 
@@ -11,7 +11,7 @@ const routes = [
   {
     path: '/',
     name: 'Inicio',
-    component: Inicio
+    component: () => import("../views/Inicio.vue")
   },
   {
     path: '/monitoreo',
@@ -31,7 +31,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes
 })

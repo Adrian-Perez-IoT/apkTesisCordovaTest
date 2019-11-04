@@ -26,4 +26,7 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <preference name="Orientation" value="default" />
+    <!-- <preference name="LoadUrlTimeoutValue" value="10000" /> -->
+    <!-- <preference name="LoadingDialog" value="Please wait, the app is loading"/> -->
+    <!-- <preference name="SplashScreenDelay" value="5000"/> -->
 </widget>
