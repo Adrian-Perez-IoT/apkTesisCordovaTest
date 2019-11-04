@@ -9,6 +9,11 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/register',
+    name: 'register',
+    component: () => import("../views/Register.vue")
+  },
+  {
     path: '/',
     name: 'Inicio',
     component: () => import("../views/Inicio.vue")
