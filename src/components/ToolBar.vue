@@ -43,6 +43,12 @@
           
         </v-list-item>
       </v-list>
+      <v-btn          
+          text
+          @click="onLogout">
+          <!-- <v-icon left dark>exit_to_app</v-icon> -->
+          Logout
+        </v-btn>
     </v-navigation-drawer>
     <!-- <v-navigation-drawer app v-model="drawer" temporary dark >
         <v-layout mt-4 column align-center>
@@ -76,8 +82,14 @@ export default {
                 { title: 'Mi cuenta', icon: 'mdi-watch', router:'/micuenta' },
                 { title: 'Log out', icon: 'mdi-watch', router:'/logout' },
                 { title: 'SignupUser', icon: 'mdi-watch', router:'/signupuser' },
+                { title: 'SigninUser', icon: 'mdi-watch', router:'/signinuser' },
             ]
         }
+    },
+    methods: {
+      onLogout () {
+        this.$store.dispatch('logout')
+      }
     }
 }
 </script>

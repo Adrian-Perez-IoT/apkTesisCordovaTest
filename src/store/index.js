@@ -70,6 +70,34 @@ export default new Vuex.Store({
 
   },
   actions: {
+    logout ({commit}) {
+      firebase.auth().signOut()
+      commit('setUser', null)
+      log('Se cerro la sesion del usuario')
+    },
+    signUserIn ({commit}, payload) {
+      commit('setLoading', true)
+      commit('clearError')
+      firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
+        .then(
+          user => {
+            commit('setLoading', false)
+            const newUser = {
+              id: user.uid,
+              // registeredMeetups: []
+            }
+            commit('setUser', newUser)
+            log('Se inicio sesion con el usuario', newUser.id)
+          }
+        )
+        .catch(
+          error => {
+            commit('setLoading', false)
+            commit('setError', error)
+            log(error)
+          }
+        )
+    },
     signUserUp ({commit}, payload) {
       commit('setLoading', true)
       commit('clearError')

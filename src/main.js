@@ -25,7 +25,7 @@ firebase.initializeApp(firebaseConfig);
 
 firebase.auth().onAuthStateChanged(async function(user){
   let usuario = await user;
-  log('Se inicializo firebase con el usario:', usuario.email);
+  log('Se inicializo firebase con el usario:', usuario);
   new Vue({
     router,
     store,
