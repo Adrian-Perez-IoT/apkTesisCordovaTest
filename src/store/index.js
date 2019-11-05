@@ -16,9 +16,24 @@ export default new Vuex.Store({
         sensorStatus:"Data set of default",
         sensorName:"Data set of default",
       },      
-    ]  
+    ],
+    user: null,
+    loading: false,
+    error: null  
   },
   mutations: {
+    setUser (state, payload) {
+      state.user = payload
+    },
+    setLoading (state, payload) {
+      state.loading = payload
+    },
+    setError (state, payload) {
+      state.error = payload
+    },
+    clearError (state) {
+      state.error = null
+    },
     setNotifications(state, data){ 
       // state.notifications.push({moment:"20 de Octubre de 2019, 11:52 AM", lugar:"Living roo"});
       state.notifications = [];
@@ -55,6 +70,31 @@ export default new Vuex.Store({
 
   },
   actions: {
+    signUserUp ({commit}, payload) {
+      commit('setLoading', true)
+      commit('clearError')
+      firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
+        .then(
+          user => {
+            commit('setLoading', false)
+            const newUser = {
+              id: user.uid,
+              // registeredMeetups: []
+            }
+            commit('setUser', newUser)
+          }
+        )
+        .catch(
+          error => {
+            commit('setLoading', false)
+            commit('setError', error)
+            log(error)
+          }
+        )
+    },
+    clearError ({commit}) {
+      commit('clearError')
+    },
     async myFunction(){ 
     },
     async readNotifications (context){
@@ -126,7 +166,15 @@ export default new Vuex.Store({
   },
   modules: {
   },
-  getters:{
-
+  getters: {    
+    user (state) {
+      return state.user
+    },
+    loading (state) {
+      return state.loading
+    },
+    error (state) {
+      return state.error
+    }
   }
 })

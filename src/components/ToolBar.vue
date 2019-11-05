@@ -75,7 +75,7 @@ export default {
                 { title: 'Gestionar usuarios', icon: 'mdi-watch', router:'/gestionarusuarios' },
                 { title: 'Mi cuenta', icon: 'mdi-watch', router:'/micuenta' },
                 { title: 'Log out', icon: 'mdi-watch', router:'/logout' },
-                { title: 'Register', icon: 'mdi-watch', router:'/register' },
+                { title: 'SignupUser', icon: 'mdi-watch', router:'/signupuser' },
             ]
         }
     }
