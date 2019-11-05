@@ -11,28 +11,51 @@ import { log } from 'util';
 Vue.config.productionTip = false
 
 // Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyDaPl-WfltavFvF1FdwTNLSHfMry9mVA5I",
-  authDomain: "backend-de7e2.firebaseapp.com",
-  databaseURL: "https://backend-de7e2.firebaseio.com",
-  projectId: "backend-de7e2",
-  storageBucket: "backend-de7e2.appspot.com",
-  messagingSenderId: "696120565365",
-  appId: "1:696120565365:web:df9414fea17efba351223c"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+// var firebaseConfig = {
+//   apiKey: "AIzaSyDaPl-WfltavFvF1FdwTNLSHfMry9mVA5I",
+//   authDomain: "backend-de7e2.firebaseapp.com",
+//   databaseURL: "https://backend-de7e2.firebaseio.com",
+//   projectId: "backend-de7e2",
+//   storageBucket: "backend-de7e2.appspot.com",
+//   messagingSenderId: "696120565365",
+//   appId: "1:696120565365:web:df9414fea17efba351223c"
+// };
+// // Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
 
-firebase.auth().onAuthStateChanged(async function(user){
-  let usuario = await user;
-  log('Se inicializo firebase con el usario:', usuario);
-  new Vue({
-    router,
-    store,
-    vuetify,
-    render: h => h(App)
-  }).$mount('#app') 
+// firebase.auth().onAuthStateChanged(async function(user){
+//   let usuario = await user;
+//   log('Se inicializo firebase con el usario:', usuario);
+//   new Vue({
+//     router,
+//     store,
+//     vuetify,
+//     render: h => h(App)
+//   }).$mount('#app') 
     
-})
+// })
+
+new Vue({  
+  router,
+  store,
+  vuetify,
+  render: h => h(App),
+  created () {
+    firebase.initializeApp({
+      apiKey: "AIzaSyDaPl-WfltavFvF1FdwTNLSHfMry9mVA5I",
+      authDomain: "backend-de7e2.firebaseapp.com",
+      databaseURL: "https://backend-de7e2.firebaseio.com",
+      projectId: "backend-de7e2",
+      storageBucket: "backend-de7e2.appspot.com",
+      messagingSenderId: "696120565365",
+      appId: "1:696120565365:web:df9414fea17efba351223c"
+    })
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.dispatch('autoSignIn', user)
+      }
+    })
+  }
+}).$mount('#app') 
 
 

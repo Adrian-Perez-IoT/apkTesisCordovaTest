@@ -24,6 +24,9 @@ export default new Vuex.Store({
   mutations: {
     setUser (state, payload) {
       state.user = payload
+      if(state.user){
+        log('Se inicio sesion satisfactoriamente con el usuario', state.user.id)
+      }      
     },
     setLoading (state, payload) {
       state.loading = payload
@@ -70,6 +73,9 @@ export default new Vuex.Store({
 
   },
   actions: {
+    autoSignIn ({commit}, payload) {
+      commit('setUser', {id: payload.uid})
+    },
     logout ({commit}) {
       firebase.auth().signOut().then(
         ()=>{
@@ -78,8 +84,6 @@ export default new Vuex.Store({
         }
       )
       commit('setUser', null)
-      
-      
     },
     signUserIn ({commit}, payload) {
       commit('setLoading', true)
@@ -92,8 +96,7 @@ export default new Vuex.Store({
               id: user.uid,
               // registeredMeetups: []
             }
-            commit('setUser', newUser)
-            log('Se inicio sesion satisfactoriamente con el usuario', newUser.id)
+            commit('setUser', newUser)            
           }
         )
         .catch(

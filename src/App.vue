@@ -11,7 +11,6 @@
 <script>
 import ToolBar from './components/ToolBar';
 // import Monitoreo from './views/Monitoreo.vue';
-// import { mapActions }  from 'vuex'
 
 export default {
   name: 'App',
@@ -26,6 +25,6 @@ export default {
     ...mapActions(['readBroadcast'])
   }, */
   data: () => ({
-  }),
+  }),  
 };
 </script>

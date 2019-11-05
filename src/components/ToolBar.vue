@@ -17,7 +17,7 @@
           <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
         </v-list-item-avatar>
         <v-list-item-content>
-          <v-list-item-title>John Leider</v-list-item-title>
+          <v-list-item-title> Jhon Smith </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
@@ -44,7 +44,7 @@
             <v-icon> mdi-xbox-controller </v-icon>
           </v-list-item-icon>
         <v-list-item-content>
-            <v-list-item-title> LogOuTBandydos</v-list-item-title>
+            <v-list-item-title>Logout</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       
@@ -71,6 +71,8 @@
 </template>
 
 <script>
+import { mapState }  from 'vuex'
+
 // import firebase from 'firebase'
 // import { log } from 'util'
 
@@ -79,10 +81,11 @@ export default {
     data(){
         return {
             drawer:null,
-            
+            userTemporal:String
         }
-    },
+    },    
     computed: {
+      ...mapState(["user"]),
       items () {
         let items = [
                 { title: 'Inicio', icon: 'mdi-xbox-controller', router:'/' },
@@ -101,7 +104,7 @@ export default {
                 { title: 'Notificaciones', icon: 'mdi-xbox-controller', router:'/notificaciones' },
                 { title: 'About', icon: 'mdi-xbox-controller', router:'/about' },
          
-        ]
+          ];          
         }
         return items
       } 
