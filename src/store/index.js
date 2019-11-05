@@ -71,9 +71,15 @@ export default new Vuex.Store({
   },
   actions: {
     logout ({commit}) {
-      firebase.auth().signOut()
+      firebase.auth().signOut().then(
+        ()=>{
+          log('Cerrando sesion')
+          // this.$router.push('/signinuser');
+        }
+      )
       commit('setUser', null)
-      log('Se cerro la sesion del usuario')
+      
+      
     },
     signUserIn ({commit}, payload) {
       commit('setLoading', true)
@@ -87,14 +93,14 @@ export default new Vuex.Store({
               // registeredMeetups: []
             }
             commit('setUser', newUser)
-            log('Se inicio sesion con el usuario', newUser.id)
+            log('Se inicio sesion satisfactoriamente con el usuario', newUser.id)
           }
         )
         .catch(
           error => {
             commit('setLoading', false)
             commit('setError', error)
-            log(error)
+            alert(error)
           }
         )
     },
@@ -116,7 +122,7 @@ export default new Vuex.Store({
           error => {
             commit('setLoading', false)
             commit('setError', error)
-            log(error)
+            alert(error)
           }
         )
     },

@@ -38,16 +38,11 @@
               :append-icon="showConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="showConfirmPassword = !showConfirmPassword"
               :rules="[comparePasswords]"
-            />
-            <v-divider></v-divider>
+            />            
             <v-card-actions>
-              <v-btn color="success">Register</v-btn>
-              <v-btn type="submit" :disabled="loading" :loading="loading">
-                Sign up
-                <span slot="loader" class="custom-loader">
-                  <v-icon light>cached</v-icon>
-                </span>
-              </v-btn>
+              <v-btn block color="success" type="submit" :disabled="loading" :loading="loading">Register</v-btn>                            
+              <!-- <v-btn color="success">Register</v-btn> -->
+              
               <!-- <v-btn color="info">Login</v-btn> -->
             </v-card-actions>
           </v-form>
