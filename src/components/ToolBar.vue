@@ -109,29 +109,14 @@ export default {
       }       
     },
     methods: {
-      onLogout () {
-        // firebase.auth().signOut().then(
-        //   ()=>{
-        //     log('Se cerro sesion satisfactoriamente');
-        //     this.$router.go(3);
-        //   }
-        // )
-        // .catch(
-        //   error => {
-        //     alert(error)
-        //   }
-        // )
+      onLogout () {        
         firebase.auth().signOut().then(
           ()=>{
-            log('Cerrando sesion')
-                
+            log('Se cerro la sesion satisfactoriamente')                
           }
         )        
         this.$store.dispatch('logout');
-        this.$router.push("/")
-        
-        // commit('setUser', null)
-        // this.$store.dispatch('logout');        
+        this.$router.push("/")        
       },
       logout ({commit}) {
         firebase.auth().signOut().then(
