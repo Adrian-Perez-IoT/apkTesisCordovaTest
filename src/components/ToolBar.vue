@@ -73,8 +73,8 @@
 <script>
 import { mapState }  from 'vuex'
 
-// import firebase from 'firebase'
-// import { log } from 'util'
+import firebase from 'firebase'
+import { log } from 'util'
 
 export default {
     name: "ToolBar",
@@ -102,13 +102,11 @@ export default {
                 { title: 'Inicio', icon: 'mdi-xbox-controller', router:'/' },
                 { title: 'Monitoreo', icon: 'mdi-xbox-controller', router:'/monitoreo' },
                 { title: 'Notificaciones', icon: 'mdi-xbox-controller', router:'/notificaciones' },
-                { title: 'About', icon: 'mdi-xbox-controller', router:'/about' },
-         
+                { title: 'About', icon: 'mdi-xbox-controller', router:'/about' },         
           ];          
         }
         return items
-      } 
-      
+      }       
     },
     methods: {
       onLogout () {
@@ -123,8 +121,28 @@ export default {
         //     alert(error)
         //   }
         // )
-        this.$store.dispatch('logout')
+        firebase.auth().signOut().then(
+          ()=>{
+            log('Cerrando sesion')
+                
+          }
+        )        
+        this.$store.dispatch('logout');
+        this.$router.push("/")
+        
+        // commit('setUser', null)
+        // this.$store.dispatch('logout');        
       },
+      logout ({commit}) {
+        firebase.auth().signOut().then(
+          ()=>{
+            log('Cerrando sesion')          
+          }
+        )
+        commit('setUser', null)
+      }
+
+
       // userIsAuthenticated(){
       //   return (this.$store.getters.user !== null && this.$store.getters.user !== undefined)
       // }

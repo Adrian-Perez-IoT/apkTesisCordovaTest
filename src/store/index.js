@@ -77,13 +77,13 @@ export default new Vuex.Store({
       commit('setUser', {id: payload.uid})
     },
     logout ({commit}) {
-      firebase.auth().signOut().then(
-        ()=>{
-          log('Cerrando sesion')
-          // this.$router.push('/signinuser');
-        }
-      )
+      // firebase.auth().signOut().then(
+      //   ()=>{
+      //     log('Cerrando sesion')          
+      //   }
+      // )
       commit('setUser', null)
+      
     },
     signUserIn ({commit}, payload) {
       commit('setLoading', true)
